@@ -1,15 +1,17 @@
 import { useGSAP } from "@gsap/react";
-import { SplitText } from "gsap/all";
+import SplitText from "gsap/SplitText";
 import gsap from "gsap";
 import { useMediaQuery } from "react-responsive";
 import { useRef } from "react";
 
+
+gsap.registerPlugin(useGSAP, SplitText);
 const Hero = () => {
   const videoRef = useRef();
   const isMobile = useMediaQuery({ maxWidth: 767 });
 
   useGSAP(() => {
-    const heroSplit = new SplitText(".title", { type: "chars, words" });
+    const heroSplit = new SplitText(".title", { type: "chars,words" });
     const paragraphSplit = new SplitText(".subtitle", { type: "lines" });
 
     heroSplit.chars.forEach((char) => char.classList.add("text-gradient"));
